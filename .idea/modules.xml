@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/FinalProject.iml" filepath="$PROJECT_DIR$/FinalProject.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/backend/backend.iml" filepath="$PROJECT_DIR$/backend/backend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/myandroidlib/myandroidlib.iml" filepath="$PROJECT_DIR$/myandroidlib/myandroidlib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/myjavalib/myjavalib.iml" filepath="$PROJECT_DIR$/myjavalib/myjavalib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/udacitybuilditbigger.iml" filepath="$PROJECT_DIR$/udacitybuilditbigger.iml" />
     </modules>
   </component>
 </project>
