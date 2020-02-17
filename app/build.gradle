@@ -29,7 +29,7 @@ android {
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
-
+        //@RunWith(AndroidJUnit4.class)
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -67,14 +67,21 @@ dependencies {
     implementation project(':myjavalib')
 
     implementation 'androidx.appcompat:appcompat:1.0.0'
-    implementation 'com.google.android.gms:play-services-ads:11.8.0'
+    implementation 'com.google.android.gms:play-services-ads:18.3.0'
     implementation 'com.google.api-client:google-api-client:1.23.0'
     implementation 'com.google.http-client:google-http-client-android:1.23.0'
     implementation 'com.google.code.findbugs:jsr305:3.0.1'
 
-    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.2.0', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
     testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'junit:junit:4.12'
+
+
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    debugImplementation 'androidx.fragment:fragment-testing:1.1.0'
+    debugImplementation 'androidx.test:core:1.2.0'
+
 }
