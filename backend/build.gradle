@@ -3,7 +3,6 @@ buildscript {
         jcenter()
     }
     dependencies {
-        // V2: Add the new App Engine and Endpoints Frameworks plugin dependencies
         classpath 'com.google.cloud.tools:endpoints-framework-gradle-plugin:1.0.3'
         classpath 'com.google.cloud.tools:appengine-gradle-plugin:1.3.3'
     }
@@ -15,9 +14,6 @@ repositories {
 
 apply plugin: 'java'
 apply plugin: 'war'
-
-
-// V2: Apply new App Engine and Endpoints Framework server plugins
 apply plugin: 'com.google.cloud.tools.appengine'
 apply plugin: 'com.google.cloud.tools.endpoints-framework-server'
 
@@ -25,23 +21,18 @@ sourceCompatibility = JavaVersion.VERSION_1_7
 targetCompatibility = JavaVersion.VERSION_1_7
 
 dependencies {
-    // V2: Endpoints Framework v2 migration
+
     implementation project(':myjavalib')
     implementation 'com.google.endpoints:endpoints-framework:2.0.9'
     implementation 'javax.inject:javax.inject:1'
     implementation 'javax.servlet:servlet-api:2.5'
 }
 
-// V2: Define deployment configuration using the new App Engine plugin
-// with the appengine closure
-appengine {  // App Engine tasks configuration
+appengine {
     tools {
         cloudSdkHome="/Users/philippdeutsch/Documents/google-cloud-sdk"
     }
-    deploy {   // deploy configuration
-
-        // The following is used for acceptance tests and
-        // is not required for a migration.
+    deploy {
         project = findProperty("appengine.deploy.project")
         version = findProperty("appengine.deploy.version")
         def promoteProp = findProperty("appengine.deploy.promote")

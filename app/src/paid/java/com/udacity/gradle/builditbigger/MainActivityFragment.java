@@ -8,14 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import com.example.myandroidlib.JokeDisplayActivity;
-
 import java.util.concurrent.ExecutionException;
 
-/**
- * A placeholder fragment containing a simple view.
- */
 public class MainActivityFragment extends Fragment {
-
 
     public MainActivityFragment() {
     }
@@ -24,9 +19,7 @@ public class MainActivityFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View root = inflater.inflate(R.layout.fragment_main, container, false);
-
         tellJoke(root);
-
         return root;
     }
 
@@ -59,5 +52,4 @@ public class MainActivityFragment extends Fragment {
         myIntent.putExtra(JokeDisplayActivity.INTENT_JOKE, result);
         startActivity(myIntent);
     }
-
 }
