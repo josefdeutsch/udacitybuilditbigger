@@ -1,29 +1,38 @@
 package com.udacity.gradle.builditbigger;
 
-import android.content.Context;
 import android.os.AsyncTask;
-import android.view.View;
-import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
 import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
 import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
 import com.udacity.gradle.builditbigger.backend.myApi.MyApi;
+
 import java.io.IOException;
 
-public class EndpointsAsyncTask extends AsyncTask<Void, Void, String> {
-    private static MyApi myApiService = null;
-    private Context mContext;
+public class EndpointsAsyncTask extends AsyncTask<Void,Void,String> {
 
-    public EndpointsAsyncTask(Context context){
-        mContext = context;
+
+    private static MyApi myApiService = null;
+    private IEndpointAsyncTask mCallback;
+
+    public EndpointsAsyncTask(IEndpointAsyncTask callback) {
+        mCallback = callback;
     }
 
     @Override
-    protected String doInBackground(Void... voids) {
-        String ApplicationName = "backEnd";
+    protected void onPreExecute() {
+        super.onPreExecute();
+        mCallback.onRetrieveJokeStart();
+    }
 
-        if(myApiService == null) {  // Only do this once
+    @Override
+    protected final String doInBackground(Void... params) {
+        String ApplicationName = "backend";
+
+        if(myApiService == null) {
             MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(),
                     new AndroidJsonFactory(), null)
                     .setRootUrl("http://10.0.2.2:8080/_ah/api/")
@@ -40,7 +49,13 @@ public class EndpointsAsyncTask extends AsyncTask<Void, Void, String> {
         try {
             return myApiService.sayHi(ApplicationName).execute().getData();
         } catch (IOException e) {
-            return e.getMessage();
+            return null;
         }
     }
+
+    @Override
+    protected void onPostExecute(@Nullable String result) {
+        mCallback.onRetrieveJokeFinish(result);
+    }
+
 }

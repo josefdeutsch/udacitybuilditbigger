@@ -1,20 +1,19 @@
 package com.udacity.gradle.builditbigger;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.appcompat.app.AlertDialog;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ProgressBar;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.Fragment;
+
 import com.example.myandroidlib.JokeDisplayActivity;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
-import java.util.concurrent.ExecutionException;
 
 
 public class MainActivityFragment extends Fragment {
@@ -32,9 +31,9 @@ public class MainActivityFragment extends Fragment {
         return root;
     }
 
-    private void setupProgressBar(View root){
+    private void setupProgressBar(){
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setCancelable(false); // if you want user to wait for some process to finish,
+        builder.setCancelable(false);
         builder.setView(R.layout.progressdialog);
         mDialog = builder.create();
         mDialog.show();
@@ -42,31 +41,26 @@ public class MainActivityFragment extends Fragment {
 
 
     private void tellJoke(final View root) {
-        ((Button) root.findViewById(R.id.joker)).setOnClickListener(new View.OnClickListener() {
+       root.findViewById(R.id.joker).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    performAction(root);
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                new EndpointsAsyncTask(new IEndpointAsyncTask() {
+                    @Override
+                    public void onRetrieveJokeStart() {
+                        setupProgressBar();
+                    }
+
+                    @Override
+                    public void onRetrieveJokeFinish(@Nullable String result) {
+                        loadIntersitialAds(result);
+                    }
+                }).execute();
             }
         });
+
     }
 
-    private void performAction(View root) throws ExecutionException, InterruptedException {
-        setupProgressBar(root);
-        String result = getJoke();
-        loadIntersitialAds(root,result);
-    }
-
-    public String getJoke() throws ExecutionException, InterruptedException {
-        return new EndpointsAsyncTask(getActivity()).execute().get();
-    }
-
-    private void loadIntersitialAds(View root,final String result){
+    private void loadIntersitialAds(@Nullable final String result){
         mInterstitialAd = new InterstitialAd(getActivity());
         mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
         mInterstitialAd.loadAd(new AdRequest.Builder().build());

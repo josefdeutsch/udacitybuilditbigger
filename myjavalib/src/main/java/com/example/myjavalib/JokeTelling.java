@@ -2,7 +2,7 @@ package com.example.myjavalib;
 
 import java.util.Random;
 
-public class JokeTelling {
+public final class JokeTelling {
 
     private String[] jokes;
     private Random random;
@@ -15,9 +15,6 @@ public class JokeTelling {
         random = new Random();
     }
 
-    public String[] getJokes() {
-        return jokes;
-    }
 
     public String getRandomJoke() {
         return jokes[random.nextInt(jokes.length)];

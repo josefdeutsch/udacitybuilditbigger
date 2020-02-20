@@ -1,12 +1,12 @@
 package com.example.myandroidlib;
 
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class JokeDisplayActivity extends AppCompatActivity {
 
@@ -16,9 +16,25 @@ public class JokeDisplayActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_joke_display);
-        String joke = getIntent().getStringExtra(INTENT_JOKE);
         TextView textViewJoke = (TextView) findViewById(R.id.textview_joke);
-        textViewJoke.setText(joke);
+        textViewJoke.setText(getExtra());
+    }
+
+    private String getExtra() {
+        String extra;
+        try {
+            extra = getStringExtra();
+        } catch (NullPointerException e)  {
+            extra = "Server timed out..";
+        }
+        return extra;
+    }
+
+    private String getStringExtra() {
+        if(getIntent().getStringExtra(INTENT_JOKE)==null){
+           throw new NullPointerException();
+        }
+        return getIntent().getStringExtra(INTENT_JOKE);
     }
 
     @Override
