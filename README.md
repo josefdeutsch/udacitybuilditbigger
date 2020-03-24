@@ -1,7 +1,7 @@
 # Udacity - BuilditBigger
 
 ## Overview:
-An Application has [product-flavors](https://developer.android.com/studio/build/build-variantstells), tells a [joke](https://cloud.google.com/endpoints) and shows [advertising](https://developers.google.com/admob/android/interstitial).
+An Application has [product-flavors](https://developer.android.com/studio/build/build-variants), tells a [joke](https://cloud.google.com/endpoints) and shows [advertising](https://developers.google.com/admob/android/interstitial).
 
 
 <a href="https://play.google.com/store/apps/details?id=com.owncloud.android"><img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" height="75"></a>
