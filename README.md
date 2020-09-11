@@ -16,7 +16,7 @@ Through this project, you will:
 * Use the Gradle App Engine plugin to deploy a backend
 * Configure an integration test suite that runs against the local App Engine development server
 
-# End Result
+## End Result:
 
 * The finished app will consist of four modules.
   * A Java library that provides jokes,
