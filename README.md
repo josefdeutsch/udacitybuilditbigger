@@ -2,7 +2,7 @@
 
 # Build It Bigger project Submitted for Udacity Android Nanodegree
 
-Project 4 of Udacity's Android Nanodegree program.
+A simple app that tells jokes. Building it bigger with Gradle. 
 
 # Objective
 
