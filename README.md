@@ -1,5 +1,7 @@
 # Udacity - BuilditBigger
 
+## Project Overview
+Make Your App Material is the sixth project in Udacity's Android Developer Nanodegree.
 A simple app that tells jokes. Building it bigger with Gradle. 
 
 ## Why this Project?
