@@ -1,7 +1,5 @@
 # Udacity - BuilditBigger
 
-# Build It Bigger project Submitted for Udacity Android Nanodegree
-
 A simple app that tells jokes. Building it bigger with Gradle. 
 
 # Objective
@@ -18,8 +16,6 @@ To also learn to:
 * Configure an integration test suite that runs against the local App Engine development server
 
 # End Result
-
-
 
 * The finished app will consist of four modules.
   * A Java library that provides jokes,
