@@ -2,11 +2,12 @@
 
 A simple app that tells jokes. Building it bigger with Gradle. 
 
-# Objective
-
-To learn the role of Gradle in building Android Apps and how to use
+## Why this Project?
+This project gives you the opportunity to learn the role of Gradle in building Android Apps and how to use
 Gradle to manage apps of increasing complexity.
-To also learn to:
+
+## What Will I Learn?
+Through this project, you will:
 
 * Add free and paid flavors to an app, and set up your build to share code between them
 * Factor reusable functionality into a Java library
